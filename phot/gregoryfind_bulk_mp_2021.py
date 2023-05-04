@@ -157,7 +157,7 @@ def snapshot(tctbl, i, cutsize=2.0):
 			wcs=wcs,
 			#	pad setting
 			mode='partial',
-			fill_value=float(hdu.header['SKYVAL']),
+			fill_value=np.median(hdu.data),
 			)
 		data = 	cutout.data
 		# Put the cutout image in the FITS HDU
@@ -475,24 +475,28 @@ def routine(tstbl, i, cutsize=0.5):
 		
 	key0 = 'mag_aper_1'
 	key1 = 'mag_aper_3'
-	#	Sci. sources magnitude diff.
-	indelm = scitbl[key0] - scitbl[key1]
-	#	Subt. sources magnitude diff.
-	hddelm = hdtbl[key0] - hdtbl[key1]
-	hdtbl['del_mag'] = hddelm
-	#	MED & MAD
-	indelm_med = np.median(indelm)
-	indelm_mad = get_mad(indelm)
-	hdtbl['del_mag_med'] = indelm_med
-	hdtbl['del_mag_mad'] = indelm_mad
-	hdtbl['N_del_mag_mad'] = np.abs((hdtbl['del_mag']-hdtbl['del_mag_med'])/hdtbl['del_mag_mad'])
-	#	out
-	n = 10
-	indx_out = np.where(
-		(hddelm<indelm_med-indelm_mad*n) |
-		(hddelm>indelm_med+indelm_mad*n)
-		)
-	hdtbl['flag_9'][indx_out] = True
+	try:
+		#	Sci. sources magnitude diff.
+		indelm = scitbl[key0] - scitbl[key1]
+		#	Subt. sources magnitude diff.
+		hddelm = hdtbl[key0] - hdtbl[key1]
+		hdtbl['del_mag'] = hddelm
+		#	MED & MAD
+		indelm_med = np.median(indelm)
+		indelm_mad = get_mad(indelm)
+		hdtbl['del_mag_med'] = indelm_med
+		hdtbl['del_mag_mad'] = indelm_mad
+		hdtbl['N_del_mag_mad'] = np.abs((hdtbl['del_mag']-hdtbl['del_mag_med'])/hdtbl['del_mag_mad'])
+		#	out
+		n = 10
+		indx_out = np.where(
+			(hddelm<indelm_med-indelm_mad*n) |
+			(hddelm>indelm_med+indelm_mad*n)
+			)
+		hdtbl['flag_9'][indx_out] = True
+	except Exception as e:
+		print(f"Error Occured:\n{e}")
+
 	#------------------------------------------------------------
 	#	flag 10+11
 	#------------------------------------------------------------

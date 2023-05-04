@@ -44,12 +44,12 @@ plt.rc('font', family='serif')
 # ## Ready
 
 # %%
-# try:
-# 	obs = (sys.argv[1]).upper()
-# except:
-# 	obs = input(f"OBS TO PROCESS:").upper()
+try:
+	obs = (sys.argv[1]).upper()
+except:
+	obs = input(f"OBS TO PROCESS:").upper()
 
-obs = 'LOAO'
+# obs = 'LOAO'
 print(f'# Observatory : {obs.upper()}')
 
 try:

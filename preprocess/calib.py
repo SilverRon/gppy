@@ -12,8 +12,31 @@ from astropy import units as u
 from astropy.io import fits
 import astropy.io.ascii as ascii
 import sys
+from astropy.nddata import CCDData
+import ccdproc
+import matplotlib.pyplot as plt
 sys.path.append('..')
 from util import tool
+
+def bn_median(masked_array, axis=None):
+    """
+    Perform fast median on masked array
+
+    Parameters
+
+    masked_array : `numpy.ma.masked_array`
+        Array of which to find the median.
+
+    axis : int, optional
+        Axis along which to perform the median. Default is to find the median of
+        the flattened array.
+    """
+    import numpy as np
+    import bottleneck as bn
+    data = masked_array.filled(fill_value=np.NaN)
+    med = bn.nanmedian(data, axis=axis)
+    # construct a masked array result, setting the mask from any NaN entries
+    return np.ma.array(med, mask=np.isnan(med))
 
 def folder_check(datalist, path_raw, path_factory):
 	'''
@@ -182,6 +205,7 @@ def master_zero(images, fig=False):
 		newmeta['COMB{}'.format(n)] = fname
 	print('{} ZERO IMAGES WILL BE COMBINED.'.format(len(zerolist)))
 	zeros = ccdproc.Combiner(zerolist)
+	# mzero = zeros.median_combine()
 	mzero = zeros.median_combine()
 	mzero.header  = newmeta
 	#	SAVE MASTER FRAME
@@ -196,11 +220,51 @@ def master_zero(images, fig=False):
 		plt.savefig(path_data+'/zero.png')
 	return mzero
 #------------------------------------------------------------
+def master_zero_bad(images, fig=False):
+	comment     = '-'*60+'\n' \
+				+ 'MAKING MASTER ZERO\n' \
+				+ '-'*60+'\n'
+	print(comment)
+	path_data = images.location
+	#	HEADER FOR MASTER FRAME
+	# fname_sample = images.filter(imagetyp='Bias Frame',).files[0]
+	# with fits.open(fname_sample) as hdul:
+	# 	meta = hdul[0]
+	# hdulist = []
+	# for hdu, fname in images.hdus(imagetyp='Bias Frame', return_fname=True):
+	for hdu, fname in images.hdus(imagetyp='bias', return_fname=True):
+		meta = hdu.header
+		# hdulist.append(meta)
+		break
+	#	New Meta data based on the first image
+	newmeta = meta.copy()
+	imlist = images.filter(imagetyp='Bias Frame',).files
+	for n, inim in enumerate(imlist):
+		n += 1
+		newmeta[f'COMB{n}'] = os.path.basename(inim)
+	newmeta['FILENAME'] = 'zero.fits'
+	print(f'{len(imlist)} ZERO IMAGES WILL BE COMBINED.')
+
+	combined_data = bn_median(np.ma.array([fits.getdata(inim) for inim in imlist]), axis=0)
+	mzero = CCDData(data=combined_data.data, meta=newmeta, unit='adu')
+
+	#	SAVE MASTER FRAME
+	if os.path.exists(f"{path_data}/zero.fits"):
+		os.system(f'rm {path_data}/zero.fits')
+	mzero.write(f'{path_data}/zero.fits')
+	# if fig != False:
+	# 	imstats = lambda dat: (dat.min(), dat.max(), dat.mean(), dat.std())
+	# 	zero_min, zero_max, zero_mean, zero_std = imstats(np.asarray(mzero))
+	# 	plt.figure(figsize=(15, 15))
+	# 	plt.imshow(mzero, vmax=zero_mean + 4*zero_std, vmin=zero_mean - 4*zero_std)
+	# 	plt.savefig(path_data+'/zero.png')
+	return mzero
+#------------------------------------------------------------
 def master_dark(images, mzero, exptime, fig=False):
-	import ccdproc
-	import os
-	from astropy.nddata import CCDData
-	import matplotlib.pyplot as plt
+	# import ccdproc
+	# import os
+	# from astropy.nddata import CCDData
+	# import matplotlib.pyplot as plt
 	comment     = '-'*60+'\n' \
 				+ 'MAKING MASTER DARK\n' \
 				+ '-'*60+'\n'
