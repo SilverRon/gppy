@@ -180,7 +180,7 @@ def querybox(refcatname, obj, racent, decent, path_refcat, radius=0.5, refmagkey
 				else:
 					querytbl_ = ascii.read(incat)
 				#	APASS catalog --> med catalog
-				reftbl = phot_tbd.apass2med(incat, outcat)
+				reftbl = gpphot.apass2med(incat, outcat)
 				refcat = outcat
 				reftbl.rename_column('RA_ICRS', 'ra')
 				reftbl.rename_column('DE_ICRS', 'dec')
@@ -207,7 +207,7 @@ def querybox(refcatname, obj, racent, decent, path_refcat, radius=0.5, refmagkey
 				else:
 					querytbl_ = ascii.read(incat)
 				#	APASS catalog --> med catalog
-				reftbl = phot_tbd.apass2med(incat, outcat)
+				reftbl = gpphot.apass2med(incat, outcat)
 				refcat = outcat
 			else:
 				reftbl = ascii.read(outcat)

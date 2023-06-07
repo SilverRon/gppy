@@ -119,7 +119,15 @@ def correcthdr_routine(path_data, hdrtbl, obs):
 				tail = hdr['OBJECT'][3: ]
 				tail = '0'+tail
 				hdr['OBJECT'] = head+tail
-		hdr['OBJECT'] = hdr['OBJECT'].upper()
+		_obj = fits.getheader(inim)['object']
+		#	GW event
+		if (_obj[:2] == 'S2') | (_obj[:3] == 'MS2'):
+			obj = _obj
+			pass
+		#	Other target
+		else:
+			obj = _obj.upper()
+		hdr['OBJECT'] = obj
 		#	CHECK USER SETTING HDR
 		for i in range(len(hdrtbl)):
 			key = hdrtbl['key'][i]
@@ -433,8 +441,13 @@ def fnamechange(inim, obs, com='mv'):
 	dateobs = hdr['DATE-OBS']
 	datestr = dateobs[0:4]+dateobs[5:7]+dateobs[8:10]
 	timestr = dateobs[11:13]+dateobs[14:16]+dateobs[17:19]
-	objname = hdr['OBJECT']
-	objname = objname.upper()	
+	_objname = hdr['OBJECT']
+	#	GW event
+	if (_objname[:2] == 'S2') | (_objname[:3] == 'MS2'):
+		objname = _objname
+		pass
+	else:
+		objname = _objname.upper()
 	filname = hdr['FILTER']  # str(hdr['FILTER'])
 	exptime = str(int(hdr['EXPTIME']))
 	newname = 'Calib-{}-{}-{}-{}-{}-{}.fits'.format(obs, objname, datestr, timestr, filname, exptime)

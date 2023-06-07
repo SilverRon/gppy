@@ -37,8 +37,9 @@ path_log = '/home/paek/log'
 # path_gppy = '/home/paek/imsngpy/imsngpy'
 # path_check_rasa36 = '/home/paek/qsopy/monitor/classify_rasa36.py'
 # path_check_lsgt = '/home/paek/qsopy/monitor/classify_lsgt.py'
-# path_preprocess = '/home/paek/qsopy/reduction/gregorycalib_2021.py'
-path_preprocess = './IMSNG_Routine.py'
+# path_imsng_routine = '/home/paek/qsopy/reduction/gregorycalib_2021.py'
+path_imsng_routine = './IMSNG_Routine.py'
+path_gecko_routine = './GECKO_Routine.py'
 #	Slack
 keytbl = ascii.read(f'{path_table}/keys.dat')
 OAuth_Token = keytbl['key'][keytbl['name']=='slack'].item()
@@ -186,7 +187,7 @@ while True:
 						# 	os.system(com)
 
 						# 	if len(dirlist) == len(os.listdir(path_base)):
-						# 		com = f"python {path_preprocess} {obs} {ncore}"
+						# 		com = f"python {path_imsng_routine} {obs} {ncore}"
 						# 		print(com)
 						# 		os.system(com)
 						# 	else:
@@ -200,7 +201,7 @@ while True:
 						# 	os.system(com)
 
 						# 	if (len(dirlist) == len(os.listdir(path_base))) & (len(glob.glob(f"{path_new}/*.fit"))>0):
-						# 		com = f"python {path_preprocess} {obs} {ncore}"
+						# 		com = f"python {path_imsng_routine} {obs} {ncore}"
 						# 		print(com)
 						# 		os.system(com)
 						# 		st = time.time()
@@ -215,7 +216,12 @@ while True:
 						pass
 					else:
 						#	Run python code
-						com = f"python {path_preprocess} {obs} {ncore}"
+						#	IMSNG routine
+						if 'S2' not in path_new:
+							com = f"python {path_imsng_routine} {obs} {ncore}"
+						#	GECKO routine
+						else:
+							com = f"python {path_gecko_routine} {obs} {ncore}"
 						print(com)
 						os.system(com)
 

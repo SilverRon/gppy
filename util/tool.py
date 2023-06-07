@@ -1018,7 +1018,12 @@ def imcombine_routine(images_to_align, ref_image):
 	#	List to combine
 	comlist = [ref_image]
 	for inim in images_to_align:
-		comlist.append(outim_gregistering(inim))
+		outim = outim_gregistering(inim)
+		if os.path.exists(outim):
+			comlist.append(outim)
+		else:
+			print(f"{os.path.basename(outim)} failed to align")
+
 
 	jdlist = []
 	exptimes = []
@@ -1084,10 +1089,12 @@ def subtraction_routine(inim, refim):
 	gregistering([refim], inim)
 	#	Registered reference image
 	grefim = '{}/{}'.format(os.path.dirname(inim), os.path.basename(outim_gregistering(refim)))
-	subim = hotpants(inim, grefim, iu=60000, tu=6000000000, tl=-100000)
-	ds9com = 'ds9 {} {} {}&'.format(inim, grefim, subim)
-	# os.system(ds9com)
-	return subim, ds9com
+	if os.path.exists(inim) & os.path.exists(grefim):
+		subim = hotpants(inim, grefim, iu=60000, tu=6000000000, tl=-100000)
+		ds9com = 'ds9 {} {} {}&'.format(inim, grefim, subim)
+		return subim, ds9com
+	else:
+		return None, None
 #-------------------------------------------------------------------------#
 def subtraction_routine2(inim, refim):
 	'''
@@ -1796,3 +1803,48 @@ def get_wcs_coordinates(filename):
 
     # 결과 반환
     return (center_ra, center_dec), vertices
+
+#------------------------------------------------------------
+def wcsremap_lite(inim, refim, outim, path_com='/data3/wcsremap/wcsremap-1.0.1/wcsremap'):
+	com = f'{path_com} -template {refim} -source {inim} -outim {outim}'
+	return com
+
+def hotpants_lite(inim, refim, outim='hd.fits', convim='hc.fits'):
+	'''
+	inim : Science image
+	refim : Reference image
+	'''
+	# com = f'hotpants -c t -n i -iu 60000 -tu 6000000000 -tl -100000 -v 0 -inim {inim} -tmplim {refim} -outim {outim} -oci {convim}'
+	com = f'hotpants -c t -n i -iu 6000000000 -il -100000 -tu 6000000000 -tl -100000 -v 0 -inim {inim} -tmplim {refim} -outim {outim} -oci {convim}'
+	return com
+
+from astropy.nddata import Cutout2D
+def snapshot_lite(image, tra, tdec, masking_value=0.0, cutsize=1.0):
+	#	Poistion of transient candidate
+	position = SkyCoord(tra, tdec, frame='icrs', unit='deg')
+	size = u.Quantity((cutsize, cutsize), u.arcmin)
+
+	hdu = fits.open(image)[0]
+	wcs = WCS(hdu.header)
+
+	# Make the cutout, including the WCS
+	cutout = Cutout2D(
+		data=hdu.data,
+		position=position,
+		size=size,
+		wcs=wcs,
+		#	pad setting
+		mode='partial',
+		fill_value=masking_value,
+		)
+	# data = 	cutout.data
+
+	# Put the cutout image in the FITS HDU
+	hdu.data = cutout.data
+
+	# Update the FITS header with the cutout WCS
+	hdu.header.update(cutout.wcs.to_header())
+
+	#	Save postage stamp *.png & *.fits
+	# hdu.writeto(outim, overwrite=True)
+	return hdu

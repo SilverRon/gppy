@@ -55,7 +55,7 @@ print(f'# Observatory : {obs.upper()}')
 try:
 	ncores = int(sys.argv[2])
 except:
-	ncores = 8
+	ncores = 2
 print(f"- Number of Cores: {ncores}")
 
 # %% [markdown]
@@ -72,9 +72,9 @@ path_keys = '/home/paek/table'
 path_gal = '/data6/IMSNG/IMSNGgalaxies'
 path_refcat = '/data4/gecko/factory/ref_frames/LOAO'
 #------------------------------------------------------------
-path_config = '/home/paek/config'
-path_default_gphot = f'/home/paek/config/gphot.{obs.lower()}.config'
-# path_mframe = f'{path_base}/master_frames'
+# path_config = '/home/paek/config'
+path_config = './config'
+path_default_gphot = f'{path_config}/gphot.{obs.lower()}.config'
 path_mframe = f'/data3/paek/factory/master_frames'
 path_calib = f'{path_base}/calib'
 #------------------------------------------------------------
@@ -572,7 +572,7 @@ outimlist = []
 for i, inim in enumerate(afzimlist):
 	outim = '{}/cr{}'.format(os.path.dirname(inim), os.path.basename(inim))
 	outimlist.append(outim)
-if ('KCT' not in obs) & ('RASA36' not in obs) & ('LOAO_FLI' not in obs):
+if ('KCT' not in obs) & ('RASA36' not in obs) & ('LOAO_FLI' not in obs) & ('LSGT_ASI1600MM' != obs):
 	#	Seeing measurement
 	if __name__ == '__main__':
 		with multiprocessing.Pool(processes=ncores) as pool:
@@ -818,10 +818,10 @@ protbl['status'][protbl['process']=='image_stack'] = True
 protbl['time'][protbl['process']=='image_stack'] = int(time.time() - st_)
 
 # %%
-images_to_align = group
-ref_image = images_to_align[0]
+# images_to_align = group
+# ref_image = images_to_align[0]
 
-outim = tool.imcombine_routine(images_to_align, ref_image)
+# outim = tool.imcombine_routine(images_to_align, ref_image)
 
 # %% [markdown]
 # ## Photometry for combined images
@@ -891,9 +891,9 @@ for inim in combined_images:
 				subim, ds9com = tool.subtraction_routine(inim, refim)
 			else:
 				pass
-
-		subtracted_images.append(subim)
-		ds9comlist.append(ds9com)
+		if subim != None:
+			subtracted_images.append(subim)
+			ds9comlist.append(ds9com)
 	else:
 		print('There is no reference image for {}'.format(os.path.basename(inim)))
 		pass
