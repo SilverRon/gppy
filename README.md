@@ -16,8 +16,8 @@ Gregory S.H. Paek (백승학)
 
 # INDEX
 - What is IMSNG/GECKO?
-- b
-- c
+- TBD
+- ...
 
 # 1. What is IMSNG/GECKO?
 ## 1.1. Intensive Monitoring Survey of Nearby Galaxies (IMSNG; [M. Im et al. (2019)](http://koreascience.or.kr/article/JAKO201912262463280.page))
