@@ -572,7 +572,7 @@ outimlist = []
 for i, inim in enumerate(afzimlist):
 	outim = '{}/cr{}'.format(os.path.dirname(inim), os.path.basename(inim))
 	outimlist.append(outim)
-if ('KCT' not in obs) & ('RASA36' not in obs) & ('LOAO_FLI' not in obs) & ('LSGT_ASI1600MM' != obs):
+if ('KCT' not in obs) & ('RASA36' not in obs) & ('LOAO_FLI' not in obs) & ('LSGT_ASI1600MM' != obs) & ('DNSM' != obs):
 	#	Seeing measurement
 	if __name__ == '__main__':
 		with multiprocessing.Pool(processes=ncores) as pool:

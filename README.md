@@ -8,7 +8,7 @@ Purpose of the gpPy is to reduce the workload from a daily data process & analys
 We have tested gpPy since 2020 in our internal system. After numerous debugging processes has been performed, it is now working stably, dealing with *infinte* unexpected situations on the data.
 
 # Author
-Gregory S.H. Paek (백승학)
+- Gregory S.H. Paek (백승학): [ORCID](https://orcid.org/my-orcid?orcid=0000-0002-6639-6533)
 
 ## Version log
 - 2023.09.01: version 0.1
@@ -28,7 +28,7 @@ The GECKO project is aiming to find kilonovae (KNe), the optical/NIR counterpart
 
 ## 1.3. Facilties
 Both projects share the same facilities. They consist of more than 10 telescopes described in below:
-- Korea
+<!-- - Korea
 	- SAO 1m
 	- SOAO 0.61m (~2020)
 	- DOAO 1m
@@ -44,7 +44,27 @@ Both projects share the same facilities. They consist of more than 10 telescopes
 - Chile
 	- KCT 0.36m
 	- RASA36 0.36m
-	- 7-Dimensional Telescope (7DT) - TBD
+	- 7-Dimensional Telescope (7DT) - TBD -->
+
+|Facility|Location|Description|
+|:---:|:---:|:---:|
+|SAO        |Korea       |TBD|
+|SOAO       |Korea       |TBD|
+|DOAO       |Korea       |TBD|
+|KHAO       |Korea       |TBD|
+|MDFTS      |Korea       |TBD|
+|MAAO       |Korea       |TBD|
+|DNSM       |Korea       |TBD|
+|CBNUO      |Korea       |TBD|
+|LOAO       |USA         |TBD|
+|McDonald   |USA         |TBD|
+|LSGT       |Austrailia  |TBD|
+|KCT        |Austrailia  |TBD|
+|RASA36     |Chile       |TBD|
+|7DT        |Chile       |TBD|
+|KMTNet_SSO |Austrailia  |TBD|
+|KMTNet_SAAO|South Africa|TBD|
+|KMTNet_CTIO|Chile       |TBD|
 
 # 2. Requirements
 We recommand the following requirements about the version:
@@ -113,9 +133,9 @@ TBD
 3. If the change is stopped in bytes unit, run the main script (`IMSNG_routine.py` or `GECKO_routine.py`)
 4. Header Correction
 5. Data Reduction
-	5.1. Bias correction
-	5.2. Dark correction
-	5.3. Flat Fielding
+	- 5.1. Bias correction
+	- 5.2. Dark correction
+	- 5.3. Flat Fielding
 6. Astrometry (`Astrometry.net`)
 7. Removal of Cosmic-ray (`LAcosmic`)
 8. Convert filename to convertional format
