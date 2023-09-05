@@ -1,4 +1,7 @@
 # gpPy
+
+[![DOI](https://zenodo.org/badge/631772578.svg)](https://zenodo.org/badge/latestdoi/631772578)
+
 The gpPy is an automatic pipeline to handle the optical/NIR images from different IMSNG/GECKO facilities from data reduction, astrometry, image stacking, calibration, image subtraction and, transient search using multithreads of CPU with `multiprocessing`.
 
 Either IMSNG or GECKO aims to find transients in the optical/NIR images to catch an early emission from them and follow up them rapidly.
