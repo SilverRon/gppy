@@ -113,21 +113,25 @@ def correcthdr_routine(path_data, hdrtbl, obs):
 		hdr['JD'] = t.jd
 		hdr['MJD'] = t.mjd
 		#	CHECK OBJECT HDR
-		if 'ngc' in hdr['OBJECT']:
-			while len(hdr['OBJECT'])<7:
-				head = hdr['OBJECT'][0:3]
-				tail = hdr['OBJECT'][3: ]
-				tail = '0'+tail
-				hdr['OBJECT'] = head+tail
-		_obj = fits.getheader(inim)['object']
-		#	GW event
-		if (_obj[:2] == 'S2') | (_obj[:3] == 'MS2'):
-			obj = _obj
-			pass
-		#	Other target
+		if 'OBJECT' in hdr.keys():
+			if 'ngc' in hdr['OBJECT']:
+				while len(hdr['OBJECT'])<7:
+					head = hdr['OBJECT'][0:3]
+					tail = hdr['OBJECT'][3: ]
+					tail = '0'+tail
+					hdr['OBJECT'] = head+tail
+			_obj = fits.getheader(inim)['object']
+			#	GW event
+			if (_obj[:2] == 'S2') | (_obj[:3] == 'MS2'):
+				obj = _obj
+				pass
+			#	Other target
+			else:
+				obj = _obj.upper()
+			hdr['OBJECT'] = obj
 		else:
-			obj = _obj.upper()
-		hdr['OBJECT'] = obj
+			# No OBJECT Header
+			pass
 		#	CHECK USER SETTING HDR
 		for i in range(len(hdrtbl)):
 			key = hdrtbl['key'][i]

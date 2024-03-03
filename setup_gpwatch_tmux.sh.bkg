@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# List of observatory names
+observatories=("loao" "cbnuo")
+
+# Start a new tmux session
+tmux new-session -d -s gppy
+
+# Create tmux windows for processing data from each observatory and execute commands
+for obs in "${observatories[@]}"
+do
+  # Create a new window and execute necessary commands
+  tmux new-window -t gppy -n "$obs" "ulimit -u 65535; conda activate gppy; cd ~/gppy; python gpwatch.py $obs 2"
+done
+
+# Attach to the tmux session after all windows have been set up
+tmux attach-session -t gppy

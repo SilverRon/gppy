@@ -11,7 +11,7 @@ from __future__ import print_function
 
 from astropy.io import fits
 from astropy.io import ascii
-import glob
+import glob, os
 # from imsng import tool
 # from imsng import phot_tbd
 import sys
@@ -234,6 +234,13 @@ def querybox(refcatname, obj, racent, decent, path_refcat, radius=0.5, refmagkey
 		else:
 			querytbl = ascii.read(path_refcat+'/2mass-'+obj+'.cat')
 		reftbl, refcat = querytbl, '2mass-'+obj+'.cat'
+	elif refcatname == 'GAIA':
+		refcatfile = f"{path_refcat}/gaia-{obj}.cat"
+		if refcatfile not in refcatlist:
+			print(f'There is no gaia reference catalog for {obj}!')
+		else:
+			querytbl = Table.read(refcatfile, format='csv')
+		reftbl, refcat = querytbl, os.path.basename(refcatfile)
 	return reftbl
 
 #-------------------------------------------------------------------------#

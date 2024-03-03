@@ -38,7 +38,7 @@ path_log = '/home/paek/log'
 # path_check_rasa36 = '/home/paek/qsopy/monitor/classify_rasa36.py'
 # path_check_lsgt = '/home/paek/qsopy/monitor/classify_lsgt.py'
 # path_imsng_routine = '/home/paek/qsopy/reduction/gregorycalib_2021.py'
-path_imsng_routine = './IMSNG_Routine.py'
+path_imsng_routine = './7DT_Routine.py'
 path_gecko_routine = './GECKO_Routine.py'
 #	Slack
 keytbl = ascii.read(f'{path_table}/keys.dat')

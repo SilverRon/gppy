@@ -183,7 +183,7 @@ def phot_routine(inim):
 	indx_dist = np.where(deldist < frac*(xcent+ycent)/2.)
 	intbl = setbl[indx_dist]
 	#	MATCHING
-	# print(reftbl)
+	print(reftbl)
 	param_match = dict(	
 						intbl=intbl, reftbl=reftbl,
 						inra=intbl['ALPHA_J2000'], indec=intbl['DELTA_J2000'],
