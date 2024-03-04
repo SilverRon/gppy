@@ -31,7 +31,7 @@ html_static_path = ['_static']
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../config'))
-sys.path.insert(0, os.path.abspath('../../phot'))
-sys.path.insert(0, os.path.abspath('../../preprocess'))
-sys.path.insert(0, os.path.abspath('../../util'))
+# sys.path.insert(0, os.path.abspath('../../config'))
+# sys.path.insert(0, os.path.abspath('../../phot'))
+# sys.path.insert(0, os.path.abspath('../../preprocess'))
+# sys.path.insert(0, os.path.abspath('../../util'))
