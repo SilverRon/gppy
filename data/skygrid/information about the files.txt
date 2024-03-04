@@ -1,0 +1,13 @@
+1. 
+Center 'name telescope'.txt 
+
+It contains: id,ra,dec that ra and dec are center position of FOV telescope.
+
+
+
+2. 
+footprint'name telescope'.txt
+
+It contains ra vertices and dec vertices. We generate vertices based on the shape and size of FOV telescope and based on the center position of FOV in sky.
+
+Ra1,dec1,ra2,dec2,ra3,dec3,ra4,dec4

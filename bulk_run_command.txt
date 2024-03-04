@@ -1,0 +1,102 @@
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py sao_kl4040 2
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py sao_c361k 2
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py SAO_C5A150M 2
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py cbnuo 2
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py khao 2
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py mdfts 2
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py maao 2
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py dnsm 2
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py loao 2
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py loao_fli 2
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py doao 2
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py kct_stx16803 2
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py rasa36 2
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py lsgt_asi1600mm 2
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py 7dt01 1
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py 7dt02 1
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py 7dt03 1
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py 7dt04 1
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py 7dt06 1
+
+ulimit -u 65535
+conda activate gppy
+cd ~/gppy
+python gpwatch.py 7dt07 1
+
+
+

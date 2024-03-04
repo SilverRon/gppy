@@ -1,0 +1,51 @@
+NUMBER                   Running object number                                    
+X_IMAGE                  Object position along x                                   [pixel]
+Y_IMAGE                  Object position along y                                   [pixel]
+ALPHA_J2000              Right ascension of barycenter (J2000)                     [deg]
+DELTA_J2000              Declination of barycenter (J2000)                         [deg]
+ALPHAPEAK_J2000          Right ascension of brightest pix (J2000)                  [deg]
+DELTAPEAK_J2000          Declination of brightest pix (J2000)                      [deg]
+MAG_AUTO                 Kron-like elliptical aperture magnitude                   [mag]
+MAGERR_AUTO              RMS error for AUTO magnitude                              [mag]
+FLUX_AUTO                Flux within a Kron-like elliptical aperture               [count]
+FLUXERR_AUTO             RMS error for AUTO flux                                   [count]
+#MAG_APER(6)                 Fixed aperture magnitude vector                           [mag]
+#MAGERR_APER(6)              RMS error vector for fixed aperture mag.                  [mag]
+#FLUX_APER(6)                Flux vector within fixed circular aperture(s)             [count]
+#FLUXERR_APER(6)             RMS error vector for aperture flux(es)                    [count]
+SNR_WIN                  Gaussian-weighted SNR                                    
+BACKGROUND               Background at centroid position                           [count]
+THRESHOLD                Detection threshold above background                      [count]
+THETA_IMAGE              Position angle (CCW/x)                                    [deg]
+ELONGATION               A_IMAGE/B_IMAGE                                          
+ELLIPTICITY              1 - B_IMAGE/A_IMAGE                                      
+CLASS_STAR               S/G classifier output                                    
+A_IMAGE                  Profile RMS along major axis                              [pixel]
+B_IMAGE                  Profile RMS along minor axis                              [pixel]
+FWHM_IMAGE               FWHM assuming a gaussian core                             [pixel]
+FWHM_WORLD               FWHM assuming a gaussian core                             [deg]
+FLAGS                    Extraction flags                                         
+#POLAR_IMAGE              (A_IMAGE^2 - B_IMAGE^2)/(A_IMAGE^2 + B_IMAGE^2)          
+#POLAR_WORLD              (A_WORLD^2 - B_WORLD^2)/(A_WORLD^2 + B_WORLD^2)          
+#POLARWIN_IMAGE           (AWIN^2 - BWIN^2)/(AWIN^2 + BWIN^2)                      
+#POLARWIN_WORLD           (AWIN^2 - BWIN^2)/(AWIN^2 + BWIN^2)                      
+#THRESHOLDMAX             Maximum threshold possible for detection                  [count]
+#FLUX_GROWTH              Cumulated growth-curve                                    [count]
+#FLUX_GROWTHSTEP          Step for growth-curves                                    [pixel]
+#MAG_GROWTH               Cumulated magnitude growth-curve                          [mag]
+#MAG_GROWTHSTEP           Step for growth-curves                                    [pixel]
+#FLUX_RADIUS              Fraction-of-light radii                                   [pixel]
+#FWHMPSF_IMAGE            FWHM of the local PSF model                               [pixel]
+#FWHMPSF_WORLD            FWHM of the local PSF model (world units)                 [deg]
+#FLUX_PSF                 Flux from PSF-fitting                                     [count]
+#FLUXERR_PSF              RMS flux error for PSF-fitting                            [count]
+#MAG_PSF                  Magnitude from PSF-fitting                                [mag]
+#MAGERR_PSF               RMS magnitude error from PSF-fitting                      [mag]
+#NITER_PSF                Number of iterations for PSF-fitting                     
+#CHI2_PSF                 Reduced chi2 from PSF-fitting                            
+#FLUX_POINTSOURCE         Point source flux from fitting                            [count]
+#FLUXERR_POINTSOURCE      RMS error on fitted point source total flux               [count]
+#FLUXRATIO_POINTSOURCE    Point-source flux-to-total ratio from fitting            
+#FLUXRATIOERR_POINTSOURCE RMS error on point-source flux-to-total ratio            
+#MAG_POINTSOURCE          Point source total magnitude from fitting                 [mag]
+#MAGERR_POINTSOURCE       RMS error on fitted point source total magnitude          [mag]
