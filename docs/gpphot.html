@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>gpphot module &mdash; gpPy 0.9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=c3a2daa6"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            gpPy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">gpphot module</a><ul>
+<li><a class="reference internal" href="#gpphot.apass2med"><code class="docutils literal notranslate"><span class="pre">apass2med()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.bkgest_mask"><code class="docutils literal notranslate"><span class="pre">bkgest_mask()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.bn_median"><code class="docutils literal notranslate"><span class="pre">bn_median()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.image_list"><code class="docutils literal notranslate"><span class="pre">image_list()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.limitmag"><code class="docutils literal notranslate"><span class="pre">limitmag()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.matching"><code class="docutils literal notranslate"><span class="pre">matching()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.plotshow"><code class="docutils literal notranslate"><span class="pre">plotshow()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.psfex"><code class="docutils literal notranslate"><span class="pre">psfex()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.psfexxml"><code class="docutils literal notranslate"><span class="pre">psfexxml()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.secom"><code class="docutils literal notranslate"><span class="pre">secom()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.sedualcom"><code class="docutils literal notranslate"><span class="pre">sedualcom()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.sexcom"><code class="docutils literal notranslate"><span class="pre">sexcom()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.star4zp"><code class="docutils literal notranslate"><span class="pre">star4zp()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.targetfind"><code class="docutils literal notranslate"><span class="pre">targetfind()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.which_obs"><code class="docutils literal notranslate"><span class="pre">which_obs()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.zpcal"><code class="docutils literal notranslate"><span class="pre">zpcal()</span></code></a></li>
+<li><a class="reference internal" href="#gpphot.zpplot"><code class="docutils literal notranslate"><span class="pre">zpplot()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gpPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">gpphot module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/gpphot.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-gpphot">
+<span id="gpphot-module"></span><h1>gpphot module<a class="headerlink" href="#module-gpphot" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.apass2med">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">apass2med</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outcat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sedcat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/paek/table/stellar_sed_template_phot4med.dat'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.apass2med" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.bkgest_mask">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">bkgest_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.bkgest_mask" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.bn_median">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">bn_median</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">masked_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.bn_median" title="Permalink to this definition"></a></dt>
+<dd><p>Perform fast median on masked array</p>
+<p>Parameters</p>
+<dl>
+<dt>masked_array<span class="classifier"><cite>numpy.ma.masked_array</cite></span></dt><dd><p>Array of which to find the median.</p>
+</dd>
+<dt>axis<span class="classifier">int, optional</span></dt><dd><p>Axis along which to perform the median. Default is to find the median of
+the flattened array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.image_list">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">image_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imlist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.image_list" title="Permalink to this definition"></a></dt>
+<dd><p>INPUT   :   imlist = glob.glob(‘Calib-<a href="#id1"><span class="problematic" id="id2">*</span></a>.fits’)
+OUTPUT  :   observatory list</p>
+<blockquote>
+<div><p>object list
+fillter list</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.limitmag">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">limitmag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aper</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skysigma</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.limitmag" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.matching">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">matching</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intbl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reftbl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refdec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.matching" title="Permalink to this definition"></a></dt>
+<dd><p>MATCHING TWO CATALOG WITH RA, Dec COORD. WITH python
+INPUT   :   SE catalog, SDSS catalog file name, sepertation [arcsec]
+OUTPUT  :   MATCED CATALOG FILE &amp; TABLE</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.plotshow">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">plotshow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numb_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xim_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yim_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numb_addlist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xim_addlist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yim_addlist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.plotshow" title="Permalink to this definition"></a></dt>
+<dd><p>PLOT IMAGE AND SHOW DESINATED OBJECTS</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.psfex">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">psfex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixscale</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.psfex" title="Permalink to this definition"></a></dt>
+<dd><p>PSfextractor
+INPUT   :   (image).fits
+OUTPUT  :   FWHM    [pixel]</p>
+<blockquote>
+<div><p>FWHM    [arcsec]</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.psfexxml">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">psfexxml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmlfile</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.psfexxml" title="Permalink to this definition"></a></dt>
+<dd><p>INPUT   :   .xml
+OUTPUT  :   FWHM    [pixel]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.secom">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">secom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixscale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seeing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">det_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'64'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backfiltersize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'3'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dual</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'detection.fits'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.secom" title="Permalink to this definition"></a></dt>
+<dd><p>SourceEXtractor
+APERTURE    3”, 5”, 7”,</p>
+<blockquote>
+<div><p>1.0seeing, 1.2seeing ,1.5seeing ,1.7seeing ,2.0seeeing</p>
+</div></blockquote>
+<dl class="simple">
+<dt>INPUT<span class="classifier">(image).fits</span></dt><dd><p>aperture    []
+seeing_fwhm [pixel]</p>
+</dd>
+<dt>OUTPUT<span class="classifier">no return</span></dt><dd><p>.cat</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.sedualcom">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">sedualcom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixscale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seeing</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">det_sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'64'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">backfiltersize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'3'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'detection.fits'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.sedualcom" title="Permalink to this definition"></a></dt>
+<dd><p>SourceEXtractor
+APERTURE    3”, 5”, 7”,</p>
+<blockquote>
+<div><p>1.0seeing, 1.2seeing ,1.5seeing ,1.7seeing ,2.0seeeing</p>
+</div></blockquote>
+<dl class="simple">
+<dt>INPUT<span class="classifier">(image).fits</span></dt><dd><p>aperture    []
+seeing_fwhm [pixel]</p>
+</dd>
+<dt>OUTPUT<span class="classifier">no return</span></dt><dd><p>.cat</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.sexcom">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">sexcom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_insex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dualmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.sexcom" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.star4zp">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">star4zp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intbl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inmagerkey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refmagkey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refmagerkey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refmaglower</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">14.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refmagupper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">17.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refmagerupper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inmagerupper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flagcut</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plotout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'zphist.png'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.star4zp" title="Permalink to this definition"></a></dt>
+<dd><p>SELECT STARS FOR USING ZEROPOINT CALCULATION
+INPUT   :   TABLE, IMAGE MAG.ERR KEYWORD, REF.MAG. KEYWORD, REF.MAG.ERR KEYWORD
+OUTPUT  :   NEW TABLE</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.targetfind">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">targetfind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tdec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refdec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.targetfind" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.which_obs">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">which_obs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_and_file</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.which_obs" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>INPUT<span class="classifier">observatory name, and path+table_name(ascii format)</span></dt><dd><p>i.e.) path_and_file=’/home/sonic/Research/table/obs.txt’</p>
+</dd>
+<dt>OUTPUT<span class="classifier">GAIN        []</span></dt><dd><p>Pixel Scale [“/pix]</p>
+</dd>
+</dl>
+<p>LOAO        E2V         2.68    4.84        0.0     0.794
+LOAO_FLI    FLI         3       15.0        0.0     1.28
+DOAO_sophia PIsophia    0.928   7.63        0.0     0.3855
+DOAO        FLI         1.27    14.0        0.005   0.464
+oldBOAO     UNKNOWN     8.9     20.0        0.0     1.7
+BOAO        UNKNOWN     5.0     2.0         0.0     0.2145
+BOAO        UNKNOWN     5.0     5.0         0.0     0.2145    
+SAO         SBIG        1.35    9.0         0.0     0.31
+30inch      UNKNOWN     1.60    5.87        0.0     1.3553
+CCA250      MLI16803    1.46    10.35       0.0     2.06
+MAIDANAK    SNU4kCAM    1.45    4.7         0.0     0.266
+MAIDANAK    UNKNOWN     5.40    9.0         0.0     0.266
+LSGT        SNUCAMII    1.15    6.0         0.2     0.92
+UKIRT       WFCAM       99.0    0.0         0.0     0.4
+=====================================================================</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.zpcal">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">zpcal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intbl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inmagkey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inmagerkey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refmagkey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refmagerkey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'default'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.zpcal" title="Permalink to this definition"></a></dt>
+<dd><p>ZERO POINT CALCULATION
+3 SIGMA CLIPPING (MEDIAN)</p>
+<p>import matplotlib.pyplot as plt
+from numpy import median
+import numpy as np</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpphot.zpplot">
+<span class="sig-prename descclassname"><span class="pre">gpphot.</span></span><span class="sig-name descname"><span class="pre">zpplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">otbl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xtbl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inmagkey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inmagerkey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refmagkey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refmagerkey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">zper</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refmaglower</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refmagupper</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpphot.zpplot" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Gregory S.H. Paek.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

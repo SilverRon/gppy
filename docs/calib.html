@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>calib module &mdash; gpPy 0.9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=c3a2daa6"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            gpPy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">calib module</a><ul>
+<li><a class="reference internal" href="#calib.astrometry"><code class="docutils literal notranslate"><span class="pre">astrometry()</span></code></a></li>
+<li><a class="reference internal" href="#calib.bn_median"><code class="docutils literal notranslate"><span class="pre">bn_median()</span></code></a></li>
+<li><a class="reference internal" href="#calib.calibration"><code class="docutils literal notranslate"><span class="pre">calibration()</span></code></a></li>
+<li><a class="reference internal" href="#calib.call_images"><code class="docutils literal notranslate"><span class="pre">call_images()</span></code></a></li>
+<li><a class="reference internal" href="#calib.changehdr"><code class="docutils literal notranslate"><span class="pre">changehdr()</span></code></a></li>
+<li><a class="reference internal" href="#calib.correcthdr_routine"><code class="docutils literal notranslate"><span class="pre">correcthdr_routine()</span></code></a></li>
+<li><a class="reference internal" href="#calib.cr_removal"><code class="docutils literal notranslate"><span class="pre">cr_removal()</span></code></a></li>
+<li><a class="reference internal" href="#calib.defringe"><code class="docutils literal notranslate"><span class="pre">defringe()</span></code></a></li>
+<li><a class="reference internal" href="#calib.fnamechange"><code class="docutils literal notranslate"><span class="pre">fnamechange()</span></code></a></li>
+<li><a class="reference internal" href="#calib.folder_check"><code class="docutils literal notranslate"><span class="pre">folder_check()</span></code></a></li>
+<li><a class="reference internal" href="#calib.fringe_cal"><code class="docutils literal notranslate"><span class="pre">fringe_cal()</span></code></a></li>
+<li><a class="reference internal" href="#calib.getobsinfo"><code class="docutils literal notranslate"><span class="pre">getobsinfo()</span></code></a></li>
+<li><a class="reference internal" href="#calib.isot_to_mjd"><code class="docutils literal notranslate"><span class="pre">isot_to_mjd()</span></code></a></li>
+<li><a class="reference internal" href="#calib.master_dark"><code class="docutils literal notranslate"><span class="pre">master_dark()</span></code></a></li>
+<li><a class="reference internal" href="#calib.master_flat"><code class="docutils literal notranslate"><span class="pre">master_flat()</span></code></a></li>
+<li><a class="reference internal" href="#calib.master_zero"><code class="docutils literal notranslate"><span class="pre">master_zero()</span></code></a></li>
+<li><a class="reference internal" href="#calib.master_zero_bad"><code class="docutils literal notranslate"><span class="pre">master_zero_bad()</span></code></a></li>
+<li><a class="reference internal" href="#calib.movecalib"><code class="docutils literal notranslate"><span class="pre">movecalib()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gpPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">calib module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/calib.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-calib">
+<span id="calib-module"></span><h1>calib module<a class="headerlink" href="#module-calib" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.astrometry">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">astrometry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixscale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fov</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpulimit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">60</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.astrometry" title="Permalink to this definition"></a></dt>
+<dd><p>ra : hh:mm:ss
+dec : dd:mm:ss
+fov [deg]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.bn_median">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">bn_median</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">masked_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.bn_median" title="Permalink to this definition"></a></dt>
+<dd><p>Perform fast median on masked array</p>
+<p>Parameters</p>
+<dl>
+<dt>masked_array<span class="classifier"><cite>numpy.ma.masked_array</cite></span></dt><dd><p>Array of which to find the median.</p>
+</dd>
+<dt>axis<span class="classifier">int, optional</span></dt><dd><p>Axis along which to perform the median. Default is to find the median of
+the flattened array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.calibration">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">calibration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mzero</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mflat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filte</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mdark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.calibration" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.call_images">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">call_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.call_images" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.changehdr">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">changehdr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">where</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">what</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.changehdr" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.correcthdr_routine">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">correcthdr_routine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hdrtbl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.correcthdr_routine" title="Permalink to this definition"></a></dt>
+<dd><ol class="arabic simple">
+<li><p>NGC337          -&gt; NGC0337
+ngc0337         -&gt; NGC0337</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.cr_removal">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">cr_removal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rdnoise</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.cr_removal" title="Permalink to this definition"></a></dt>
+<dd><p>inim 
+obs = ‘LOAO’
+gain = 2.68
+rdnoise = 4.84</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.defringe">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">defringe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dfim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dfdat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.defringe" title="Permalink to this definition"></a></dt>
+<dd><p>inim : image to remove fringe
+dfim : master fringe image
+dfdat : master fringe data</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.fnamechange">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">fnamechange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">com</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mv'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.fnamechange" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.folder_check">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">folder_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datalist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_raw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_factory</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.folder_check" title="Permalink to this definition"></a></dt>
+<dd><p>CHECK NEW OBSERVATION DATA FOLDER</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.fringe_cal">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">fringe_cal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dfdat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.fringe_cal" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.getobsinfo">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">getobsinfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obstbl</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.getobsinfo" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.isot_to_mjd">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">isot_to_mjd</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.isot_to_mjd" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.master_dark">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">master_dark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mzero</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exptime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.master_dark" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.master_flat">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">master_flat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mzero</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filte</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mdark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.master_flat" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.master_zero">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">master_zero</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.master_zero" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.master_zero_bad">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">master_zero_bad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.master_zero_bad" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="calib.movecalib">
+<span class="sig-prename descclassname"><span class="pre">calib.</span></span><span class="sig-name descname"><span class="pre">movecalib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_gal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/data3/IMSNG/IMSNGgalaxies'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">additional</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#calib.movecalib" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Gregory S.H. Paek.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tool module &mdash; gpPy 0.9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=c3a2daa6"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            gpPy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">tool module</a><ul>
+<li><a class="reference internal" href="#tool.SE_seeing"><code class="docutils literal notranslate"><span class="pre">SE_seeing()</span></code></a></li>
+<li><a class="reference internal" href="#tool.ToO_request"><code class="docutils literal notranslate"><span class="pre">ToO_request()</span></code></a></li>
+<li><a class="reference internal" href="#tool.abs2app"><code class="docutils literal notranslate"><span class="pre">abs2app()</span></code></a></li>
+<li><a class="reference internal" href="#tool.align_img"><code class="docutils literal notranslate"><span class="pre">align_img()</span></code></a></li>
+<li><a class="reference internal" href="#tool.calc_app"><code class="docutils literal notranslate"><span class="pre">calc_app()</span></code></a></li>
+<li><a class="reference internal" href="#tool.calc_rts"><code class="docutils literal notranslate"><span class="pre">calc_rts()</span></code></a></li>
+<li><a class="reference internal" href="#tool.combname"><code class="docutils literal notranslate"><span class="pre">combname()</span></code></a></li>
+<li><a class="reference internal" href="#tool.cr_removal"><code class="docutils literal notranslate"><span class="pre">cr_removal()</span></code></a></li>
+<li><a class="reference internal" href="#tool.detection"><code class="docutils literal notranslate"><span class="pre">detection()</span></code></a></li>
+<li><a class="reference internal" href="#tool.dict2table"><code class="docutils literal notranslate"><span class="pre">dict2table()</span></code></a></li>
+<li><a class="reference internal" href="#tool.ds9regmaker"><code class="docutils literal notranslate"><span class="pre">ds9regmaker()</span></code></a></li>
+<li><a class="reference internal" href="#tool.epochimcomb"><code class="docutils literal notranslate"><span class="pre">epochimcomb()</span></code></a></li>
+<li><a class="reference internal" href="#tool.exptime4limitmag"><code class="docutils literal notranslate"><span class="pre">exptime4limitmag()</span></code></a></li>
+<li><a class="reference internal" href="#tool.get_wcs_coordinates"><code class="docutils literal notranslate"><span class="pre">get_wcs_coordinates()</span></code></a></li>
+<li><a class="reference internal" href="#tool.getccdinfo"><code class="docutils literal notranslate"><span class="pre">getccdinfo()</span></code></a></li>
+<li><a class="reference internal" href="#tool.gregistering"><code class="docutils literal notranslate"><span class="pre">gregistering()</span></code></a></li>
+<li><a class="reference internal" href="#tool.hotpants"><code class="docutils literal notranslate"><span class="pre">hotpants()</span></code></a></li>
+<li><a class="reference internal" href="#tool.hotpants_lite"><code class="docutils literal notranslate"><span class="pre">hotpants_lite()</span></code></a></li>
+<li><a class="reference internal" href="#tool.imcombine_routine"><code class="docutils literal notranslate"><span class="pre">imcombine_routine()</span></code></a></li>
+<li><a class="reference internal" href="#tool.imsng_name_correction"><code class="docutils literal notranslate"><span class="pre">imsng_name_correction()</span></code></a></li>
+<li><a class="reference internal" href="#tool.limitmag"><code class="docutils literal notranslate"><span class="pre">limitmag()</span></code></a></li>
+<li><a class="reference internal" href="#tool.npstr2str"><code class="docutils literal notranslate"><span class="pre">npstr2str()</span></code></a></li>
+<li><a class="reference internal" href="#tool.obs_summary"><code class="docutils literal notranslate"><span class="pre">obs_summary()</span></code></a></li>
+<li><a class="reference internal" href="#tool.outim_gregistering"><code class="docutils literal notranslate"><span class="pre">outim_gregistering()</span></code></a></li>
+<li><a class="reference internal" href="#tool.puthdr"><code class="docutils literal notranslate"><span class="pre">puthdr()</span></code></a></li>
+<li><a class="reference internal" href="#tool.rts_maker"><code class="docutils literal notranslate"><span class="pre">rts_maker()</span></code></a></li>
+<li><a class="reference internal" href="#tool.rtsmaker"><code class="docutils literal notranslate"><span class="pre">rtsmaker()</span></code></a></li>
+<li><a class="reference internal" href="#tool.send_gmail"><code class="docutils literal notranslate"><span class="pre">send_gmail()</span></code></a></li>
+<li><a class="reference internal" href="#tool.sendmail"><code class="docutils literal notranslate"><span class="pre">sendmail()</span></code></a></li>
+<li><a class="reference internal" href="#tool.slack_bot"><code class="docutils literal notranslate"><span class="pre">slack_bot()</span></code></a></li>
+<li><a class="reference internal" href="#tool.snapshot_lite"><code class="docutils literal notranslate"><span class="pre">snapshot_lite()</span></code></a></li>
+<li><a class="reference internal" href="#tool.sqsum"><code class="docutils literal notranslate"><span class="pre">sqsum()</span></code></a></li>
+<li><a class="reference internal" href="#tool.stampimage"><code class="docutils literal notranslate"><span class="pre">stampimage()</span></code></a></li>
+<li><a class="reference internal" href="#tool.subtraction_routine"><code class="docutils literal notranslate"><span class="pre">subtraction_routine()</span></code></a></li>
+<li><a class="reference internal" href="#tool.subtraction_routine2"><code class="docutils literal notranslate"><span class="pre">subtraction_routine2()</span></code></a></li>
+<li><a class="reference internal" href="#tool.subtraction_routine3"><code class="docutils literal notranslate"><span class="pre">subtraction_routine3()</span></code></a></li>
+<li><a class="reference internal" href="#tool.swarpalign"><code class="docutils literal notranslate"><span class="pre">swarpalign()</span></code></a></li>
+<li><a class="reference internal" href="#tool.swarpcomb"><code class="docutils literal notranslate"><span class="pre">swarpcomb()</span></code></a></li>
+<li><a class="reference internal" href="#tool.timename"><code class="docutils literal notranslate"><span class="pre">timename()</span></code></a></li>
+<li><a class="reference internal" href="#tool.trim"><code class="docutils literal notranslate"><span class="pre">trim()</span></code></a></li>
+<li><a class="reference internal" href="#tool.wcsremap"><code class="docutils literal notranslate"><span class="pre">wcsremap()</span></code></a></li>
+<li><a class="reference internal" href="#tool.wcsremap_lite"><code class="docutils literal notranslate"><span class="pre">wcsremap_lite()</span></code></a></li>
+<li><a class="reference internal" href="#tool.z2dist"><code class="docutils literal notranslate"><span class="pre">z2dist()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gpPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">tool module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tool.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-tool">
+<span id="tool-module"></span><h1>tool module<a class="headerlink" href="#module-tool" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.SE_seeing">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">SE_seeing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seeing_assume</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frac</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.68</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clean</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.SE_seeing" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.ToO_request">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">ToO_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ul0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nsigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.ToO_request" title="Permalink to this definition"></a></dt>
+<dd><p>ul0 : base n sigma depth
+m0 : target magnitude
+n : n*exposure time
+nsigma : ? sigma depth (default 5)</p>
+<p>return depth, target magnitude error</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.abs2app">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">abs2app</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magerr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gwdist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gwdiststd</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.abs2app" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.align_img">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">align_img</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reference_img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.align_img" title="Permalink to this definition"></a></dt>
+<dd><blockquote>
+<div><p>Author: HH Choi
+Modified by Gregory S.H. Paek</p>
+</div></blockquote>
+<section id="parameters">
+<h2>parameters<a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>target_img<span class="classifier">str</span></dt><dd><p>absolute path of a target image</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>reference_img<span class="classifier">str</span></dt><dd><p>absolute path of a reference image
+The image as a reference frame. All images will be aligned on the basis of this image</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>prefix = str</dt><dd><p>prefix of the aligned iamge</p>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+<section id="returns">
+<h2>returns<a class="headerlink" href="#returns" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>outputname<span class="classifier">str</span></dt><dd><p>absolute path of the aligned image</p>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+<section id="notes">
+<h2>notes<a class="headerlink" href="#notes" title="Permalink to this heading"></a></h2>
+<dl class="simple">
+<dt>usages</dt><dd><dl class="simple">
+<dt>if __name__ == ‘__main__’:</dt><dd><p>tgtimg = ‘/Users/hhchoi1022/Desktop/Calib-KCT_STX16803-NGC1566-20220325-013537-g-120.fits’
+refimg = ‘/Users/hhchoi1022/Desktop/Ref-KCT_STX16803-NGC1566-g-4440.com.fits’
+align_img(target_img= tgtimg, reference_img= refimg)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.calc_app">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">calc_app</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">magerr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gwdist0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gwdiststd0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gwdist1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gwdiststd1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.calc_app" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.calc_rts">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">calc_rts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">observatory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obsdate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obsinfofile</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">altlimit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">moonseperation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.calc_rts" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.combname">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">combname</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imlist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.combname" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.cr_removal">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">cr_removal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rdnoise</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.cr_removal" title="Permalink to this definition"></a></dt>
+<dd><p>inim 
+obs = ‘LOAO’
+gain = 2.68
+rdnoise = 4.84</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.detection">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">detection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.detection" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.dict2table">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">dict2table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_save</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.dict2table" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.ds9regmaker">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">ds9regmaker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'green'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dashlist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'helvetica'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fontsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ds9.reg'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.ds9regmaker" title="Permalink to this definition"></a></dt>
+<dd><p>name = intbl[‘Object Name’]
+ra = intbl[‘RA’]
+dec = intbl[‘DEC’]
+radius=1.5
+color=’green’
+dashlist=8
+width=2
+font=’helvetica’
+fontsize=10
+filename=’ds9.reg’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.epochimcomb">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">epochimcomb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imlist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'imcomb.fits'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.epochimcomb" title="Permalink to this definition"></a></dt>
+<dd><p>imlist = glob.glob(‘Calib*20181229*.fits’)
+epochimcomb(imlist)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.exptime4limitmag">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">exptime4limitmag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ul0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ul</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.exptime4limitmag" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.get_wcs_coordinates">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">get_wcs_coordinates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.get_wcs_coordinates" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.getccdinfo">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">getccdinfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_obs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.getccdinfo" title="Permalink to this definition"></a></dt>
+<dd><p>GET CCD INFORMATION (GAIN, PIXEL SCALE, FOV)</p>
+<p>gain, pixscale, fov = getccdinfo(obs, path_obs)</p>
+<p>INPUT:
+path_obs = ‘/home/sonic/Research/table/obs.txt’</p>
+<p>OUTPUT:
+gain, pixscale, fov</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.gregistering">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">gregistering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images_to_align</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.gregistering" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.hotpants">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">hotpants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6000000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">il</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-100000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tu</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6000000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-100000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.hotpants" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.hotpants_lite">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">hotpants_lite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hd.fits'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">convim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'hc.fits'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.hotpants_lite" title="Permalink to this definition"></a></dt>
+<dd><p>inim : Science image
+refim : Reference image</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.imcombine_routine">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">imcombine_routine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">images_to_align</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.imcombine_routine" title="Permalink to this definition"></a></dt>
+<dd><p>path_data = ‘/data3/paek/factory/doao/20201209-1m-IMSNG’
+images_to_align = sorted(glob.glob(‘/data3/paek/factory/doao/20201209-1m-IMSNG/Calib-DOAO*-R-60.fits’))
+ref_image = ‘/data3/paek/factory/doao/20201209-1m-IMSNG/Calib-DOAO-NGC6946-20201209-094720-R-60.fits’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.imsng_name_correction">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">imsng_name_correction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alltbl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.imsng_name_correction" title="Permalink to this definition"></a></dt>
+<dd><p>path_alltarget = ‘/home/paek/table/alltarget.dat’
+alltbl = ascii.read(path_alltarget)
+inim = ‘/data3/IMSNG/IMSNGgalaxies/NGC0772/CBNUO/R/Calib-CBNUO-NGC0772-20201210-144734-R-180.fits’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.limitmag">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">limitmag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ul0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.limitmag" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.npstr2str">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">npstr2str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.npstr2str" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.obs_summary">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">obs_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filte</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ic_cal_phot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ic_com_phot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_save</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.obs_summary" title="Permalink to this definition"></a></dt>
+<dd><p>#       Observation summary plots
+#       2020.12.26      Created by      Gregory S.H. Paek
+filte = ‘R’
+ic_cal_phot, ic_com_phot
+path_save = path_data</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.outim_gregistering">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">outim_gregistering</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.outim_gregistering" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.puthdr">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">puthdr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hdrkey</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hdrval</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hdrcomment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.puthdr" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.rts_maker">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">rts_maker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">savepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obstbl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intbl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hhmmss</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.rts_maker" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.rtsmaker">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">rtsmaker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">observatory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obspath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catpath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">altlimit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">moonseperation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">40.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sunlimit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-18'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numlimit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.rtsmaker" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.send_gmail">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">send_gmail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fromID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fromPW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toIDs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ccIDs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.send_gmail" title="Permalink to this definition"></a></dt>
+<dd><p>SEND GMAIL
+Security reference
+<a class="reference external" href="https://cpuu.postype.com/post/23066">https://cpuu.postype.com/post/23066</a>
+Code reference
+<a class="reference external" href="https://kimdoky.github.io/python/2017/07/21/smtplib_email.html">https://kimdoky.github.io/python/2017/07/21/smtplib_email.html</a>
+File attach
+<a class="reference external" href="https://brunch.co.kr/&#64;jk-lab/31">https://brunch.co.kr/&#64;jk-lab/31</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.sendmail">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">sendmail</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_machine</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_contents</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subject</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Hello</span> <span class="pre">World!'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_attach_txt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_attach_png</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.sendmail" title="Permalink to this definition"></a></dt>
+<dd><p>obs = ‘LOAO’
+path_data = ‘/data3/paek/factory/test’
+path_machine = ‘/home/paek/table/mail.machine.dat’
+path_address = ‘/home/paek/table/mail.recivers.txt’
+subject = ‘[IMSNG] {} ‘.format(obs)
+path_contents = ‘{}/helloworld.txt’.format(path_data)
+path_attach_png = None
+path_attach_txt = None</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.slack_bot">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">slack_bot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.slack_bot" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.snapshot_lite">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">snapshot_lite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tdec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">masking_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.snapshot_lite" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.sqsum">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">sqsum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.sqsum" title="Permalink to this definition"></a></dt>
+<dd><p>SQUARE SUM
+USEFUL TO CALC. ERROR</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.stampimage">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">stampimage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'IMSNG_transient'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'./IMSNG_transient.png'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.stampimage" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.subtraction_routine">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">subtraction_routine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.subtraction_routine" title="Permalink to this definition"></a></dt>
+<dd><p>obs = ‘LOAO’
+path_refim = ‘/data3/paek/factory/ref_frames/{}’.format(obs)
+inim = ‘/data3/paek/factory/test/Calib-LOAO-NGC6946-20201213-014607-R-180-com.fits’</p>
+<p>obj = ‘NGC6946’
+filte = ‘R’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.subtraction_routine2">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">subtraction_routine2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.subtraction_routine2" title="Permalink to this definition"></a></dt>
+<dd><p>obs = ‘LOAO’
+path_refim = ‘/data3/paek/factory/ref_frames/{}’.format(obs)
+inim = ‘/data3/paek/factory/test/Calib-LOAO-NGC6946-20201213-014607-R-180-com.fits’</p>
+<p>obj = ‘NGC6946’
+filte = ‘R’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.subtraction_routine3">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">subtraction_routine3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.subtraction_routine3" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.swarpalign">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">swarpalign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imlist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixscale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">racent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ximage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yimage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">listname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'obj.list'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'align.fits'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.swarpalign" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.swarpcomb">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">swarpcomb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">imlist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pixscale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">racent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ximage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yimage</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">listname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'obj.list'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys_to_get</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['OBJECT',</span> <span class="pre">'FILTER']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.swarpcomb" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.timename">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">timename</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tool.timename" title="Permalink to this definition"></a></dt>
+<dd><p>CONVERT ‘TIME’ TO YYMMDD, HHMMSS FORM.
+INPUT   :       NONE
+OUTPUT  :       STRIG FORM OF ‘YYMMDD’, ‘HHMMSS’</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.trim">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">trim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'trim.fits'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.trim" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.wcsremap">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">wcsremap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_com</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/data3/wcsremap/wcsremap-1.0.1/wcsremap'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.wcsremap" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.wcsremap_lite">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">wcsremap_lite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_com</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/data3/wcsremap/wcsremap-1.0.1/wcsremap'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.wcsremap_lite" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="tool.z2dist">
+<span class="sig-prename descclassname"><span class="pre">tool.</span></span><span class="sig-name descname"><span class="pre">z2dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">z</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tool.z2dist" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Gregory S.H. Paek.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

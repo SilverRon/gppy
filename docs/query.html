@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>query module &mdash; gpPy 0.9 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=c3a2daa6"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            gpPy
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">query module</a><ul>
+<li><a class="reference internal" href="#query.apass_Blaton"><code class="docutils literal notranslate"><span class="pre">apass_Blaton()</span></code></a></li>
+<li><a class="reference internal" href="#query.apass_query"><code class="docutils literal notranslate"><span class="pre">apass_query()</span></code></a></li>
+<li><a class="reference internal" href="#query.downimage_routine"><code class="docutils literal notranslate"><span class="pre">downimage_routine()</span></code></a></li>
+<li><a class="reference internal" href="#query.galex_query"><code class="docutils literal notranslate"><span class="pre">galex_query()</span></code></a></li>
+<li><a class="reference internal" href="#query.getimages"><code class="docutils literal notranslate"><span class="pre">getimages()</span></code></a></li>
+<li><a class="reference internal" href="#query.geturl"><code class="docutils literal notranslate"><span class="pre">geturl()</span></code></a></li>
+<li><a class="reference internal" href="#query.nomad_query"><code class="docutils literal notranslate"><span class="pre">nomad_query()</span></code></a></li>
+<li><a class="reference internal" href="#query.ps1_Tonry"><code class="docutils literal notranslate"><span class="pre">ps1_Tonry()</span></code></a></li>
+<li><a class="reference internal" href="#query.ps1_query"><code class="docutils literal notranslate"><span class="pre">ps1_query()</span></code></a></li>
+<li><a class="reference internal" href="#query.querybox"><code class="docutils literal notranslate"><span class="pre">querybox()</span></code></a></li>
+<li><a class="reference internal" href="#query.sdss_Blaton"><code class="docutils literal notranslate"><span class="pre">sdss_Blaton()</span></code></a></li>
+<li><a class="reference internal" href="#query.sdss_query"><code class="docutils literal notranslate"><span class="pre">sdss_query()</span></code></a></li>
+<li><a class="reference internal" href="#query.twomass_query"><code class="docutils literal notranslate"><span class="pre">twomass_query()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gpPy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">query module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/query.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-query">
+<span id="query-module"></span><h1>query module<a class="headerlink" href="#module-query" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="query.apass_Blaton">
+<span class="sig-prename descclassname"><span class="pre">query.</span></span><span class="sig-name descname"><span class="pre">apass_Blaton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intbl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#query.apass_Blaton" title="Permalink to this definition"></a></dt>
+<dd><dl>
+<dt>OUTPUT<span class="classifier">1.  ONLY STAR CLASS (=6)</span></dt><dd><ol class="arabic simple" start="2">
+<li><p>(2)ACCEPTABLE &amp; (3)GOOD QUALITY</p></li>
+</ol>
+<p>3.  NAME, RA, Dec, ugriz, BVRI [AB] (Blaton+07), clean
+sdss-conv.cat</p>
+</dd>
+</dl>
+<section id="equation-color-dispersion">
+<h2>Equation                                        Color Dispersion<a class="headerlink" href="#equation-color-dispersion" title="Permalink to this heading"></a></h2>
+<p>U   = u - 0.0682 - 0.0140[ (u - g) - 1.2638 ]   sigma[u - g] = 0.26
+B   = u - 1.0286 - 0.7981[ (u - g) - 1.2638 ]   sigma[u - g] = 0.26
+<a href="#id1"><span class="problematic" id="id2">*</span></a>B   = g + 0.2354 + 0.3915[ (g - r) - 0.6102 ]   sigma[g - r] = 0.15
+V   = g - 0.3516 - 0.7585[ (g - r) - 0.6102 ]   sigma[g - r] = 0.15
+R   = r - 0.0576 - 0.3718[ (r - i) - 0.2589 ]   sigma[r - i] = 0.10
+I   = i - 0.0647 - 0.7177[ (i - z) - 0.2083 ]   sigma[i - z] = 0.10
+=====================================================================</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="query.apass_query">
+<span class="sig-prename descclassname"><span class="pre">query.</span></span><span class="sig-name descname"><span class="pre">apass_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radeg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dedeg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#query.apass_query" title="Permalink to this definition"></a></dt>
+<dd><p>APASS QUERY
+INPUT   :   NAME, RA [deg], Dec [deg], radius
+OUTPUT  :   QUERY TABLE</p>
+<blockquote>
+<div><p>apass-[NAME].cat</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="query.downimage_routine">
+<span class="sig-prename descclassname"><span class="pre">query.</span></span><span class="sig-name descname"><span class="pre">downimage_routine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#query.downimage_routine" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="query.galex_query">
+<span class="sig-prename descclassname"><span class="pre">query.</span></span><span class="sig-name descname"><span class="pre">galex_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radeg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dedeg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.6</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#query.galex_query" title="Permalink to this definition"></a></dt>
+<dd><p><a class="reference external" href="https://vizier.u-strasbg.fr/viz-bin/VizieR-3?-source=II/335/galex_ais">https://vizier.u-strasbg.fr/viz-bin/VizieR-3?-source=II/335/galex_ais</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="query.getimages">
+<span class="sig-prename descclassname"><span class="pre">query.</span></span><span class="sig-name descname"><span class="pre">getimages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">240</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'grizy'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#query.getimages" title="Permalink to this definition"></a></dt>
+<dd><p>Query ps1filenames.py service to get a list of images
+ra, dec = position in degrees
+size = image size in pixels (0.25 arcsec/pixel)
+filters = string with filters to include
+Returns a table with the results</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="query.geturl">
+<span class="sig-prename descclassname"><span class="pre">query.</span></span><span class="sig-name descname"><span class="pre">geturl</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ra</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">240</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'grizy'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'jpg'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#query.geturl" title="Permalink to this definition"></a></dt>
+<dd><p>Get URL for images in the table</p>
+<p>ra, dec = position in degrees
+size = extracted image size in pixels (0.25 arcsec/pixel)
+output_size = output (display) image size in pixels (default = size).</p>
+<blockquote>
+<div><p>output_size has no effect for fits format images.</p>
+</div></blockquote>
+<p>filters = string with filters to include
+format = data format (options are “jpg”, “png” or “fits”)
+color = if True, creates a color image (only for jpg or png format).</p>
+<blockquote>
+<div><p>Default is return a list of URLs for single-filter grayscale images.</p>
+</div></blockquote>
+<p>Returns a string with the URL</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="query.nomad_query">
+<span class="sig-prename descclassname"><span class="pre">query.</span></span><span class="sig-name descname"><span class="pre">nomad_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radeg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dedeg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#query.nomad_query" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="query.ps1_Tonry">
+<span class="sig-prename descclassname"><span class="pre">query.</span></span><span class="sig-name descname"><span class="pre">ps1_Tonry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intbl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#query.ps1_Tonry" title="Permalink to this definition"></a></dt>
+<dd><p>PS1 -&gt; Johnson/COusins [Vega] -&gt; [AB]   (Tonry+12)
+#   Vega - AB Magnitude Conversion (Blanton+07)
+U       : m_AB - m_Vega = 0.79
+B       : m_AB - m_Vega =-0.09
+V       : m_AB - m_Vega = 0.02
+R       : m_AB - m_Vega = 0.21
+I       : m_AB - m_Vega = 0.45
+J       : m_AB - m_Vega = 0.91
+H       : m_AB - m_Vega = 1.39
+K       : m_AB - m_Vega = 1.85</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="query.ps1_query">
+<span class="sig-prename descclassname"><span class="pre">query.</span></span><span class="sig-name descname"><span class="pre">ps1_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radeg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dedeg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#query.ps1_query" title="Permalink to this definition"></a></dt>
+<dd><p>#       SELECT STARS FROM STARS &amp; GALAXIES (iPSF - iKron &lt;= 0.05)
+<a class="reference external" href="https://outerspace.stsci.edu/display/PANSTARRS">https://outerspace.stsci.edu/display/PANSTARRS</a>/How+to+separate+stars+and+galaxies#</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="query.querybox">
+<span class="sig-prename descclassname"><span class="pre">query.</span></span><span class="sig-name descname"><span class="pre">querybox</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">refcatname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">racent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_refcat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refmagkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#query.querybox" title="Permalink to this definition"></a></dt>
+<dd><p>reftbl = querybox(<a href="#id3"><span class="problematic" id="id4">**</span></a>param_query)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="query.sdss_Blaton">
+<span class="sig-prename descclassname"><span class="pre">query.</span></span><span class="sig-name descname"><span class="pre">sdss_Blaton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intbl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#query.sdss_Blaton" title="Permalink to this definition"></a></dt>
+<dd><dl>
+<dt>OUTPUT<span class="classifier">1.  ONLY STAR CLASS (=6)</span></dt><dd><ol class="arabic simple" start="2">
+<li><p>(2)ACCEPTABLE &amp; (3)GOOD QUALITY</p></li>
+</ol>
+<p>3.  NAME, RA, Dec, ugriz, BVRI [AB] (Blaton+07), clean
+sdss-conv.cat</p>
+</dd>
+</dl>
+<section id="id5">
+<h2>Equation                                        Color Dispersion<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h2>
+<p>U   = u - 0.0682 - 0.0140[ (u - g) - 1.2638 ]   sigma[u - g] = 0.26
+B   = u - 1.0286 - 0.7981[ (u - g) - 1.2638 ]   sigma[u - g] = 0.26
+<a href="#id6"><span class="problematic" id="id7">*</span></a>B   = g + 0.2354 + 0.3915[ (g - r) - 0.6102 ]   sigma[g - r] = 0.15
+V   = g - 0.3516 - 0.7585[ (g - r) - 0.6102 ]   sigma[g - r] = 0.15
+R   = r - 0.0576 - 0.3718[ (r - i) - 0.2589 ]   sigma[r - i] = 0.10
+I   = i - 0.0647 - 0.7177[ (i - z) - 0.2083 ]   sigma[i - z] = 0.10
+=====================================================================</p>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="query.sdss_query">
+<span class="sig-prename descclassname"><span class="pre">query.</span></span><span class="sig-name descname"><span class="pre">sdss_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radeg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dedeg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#query.sdss_query" title="Permalink to this definition"></a></dt>
+<dd><p>SDSS QUERY
+INPUT   :   NAME, RA [deg], Dec [deg], radius
+OUTPUT  :   QUERY TABLE</p>
+<blockquote>
+<div><p>sdss-[NAME].cat</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="query.twomass_query">
+<span class="sig-prename descclassname"><span class="pre">query.</span></span><span class="sig-name descname"><span class="pre">twomass_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radeg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dedeg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">band</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#query.twomass_query" title="Permalink to this definition"></a></dt>
+<dd><p>QUERY Point Source Catalog(PSC) PROVIDED BY 2MASS
+REMOVE COMTAMINATED SOURCE BY EXTENDED SOURCE AND MINOR PLANET
+IF GIVE BAND INPUT,</p>
+<p>INPUT   :       NAME, RA [deg], DEC [deg], BAND, RADIUS
+OUTPUT  :       TABLE, MAGNITUDE [AB]</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Gregory S.H. Paek.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
