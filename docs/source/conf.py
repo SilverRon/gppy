@@ -28,6 +28,7 @@ html_baseurl = 'https://silverron.github.io/gppy/'
 extensions = ['sphinx.ext.autodoc']
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
+html_favicon = 'favicon.ico'
 
 import os
 import sys
