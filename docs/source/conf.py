@@ -37,3 +37,9 @@ sys.path.insert(0, os.path.abspath('../../config'))
 sys.path.insert(0, os.path.abspath('../../phot'))
 sys.path.insert(0, os.path.abspath('../../preprocess'))
 sys.path.insert(0, os.path.abspath('../../util'))
+
+from recommonmark.parser import CommonMarkParser
+
+source_parsers = {
+    '.md': CommonMarkParser,
+}

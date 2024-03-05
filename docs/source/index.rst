@@ -10,7 +10,17 @@ Welcome to gpPy's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+.. toctree::
+   :maxdepth: 2
+   :caption: A:
 
+   A/a_1.md
+
+.. toctree::
+   :maxdepth: 2
+   :caption: B:
+
+   B/b_1.md
 
 Indices and tables
 ==================
