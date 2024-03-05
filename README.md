@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/631772578.svg)](https://zenodo.org/badge/latestdoi/631772578)
 
-The gpPy is an automatic pipeline to handle the optical/NIR images from different IMSNG/GECKO facilities from data reduction, astrometry, image stacking, calibration, image subtraction and, transient search using multithreads of CPU with `multiprocessing`.
+__The gpPy is an automatic pipeline to handle the optical/NIR images from different IMSNG/GECKO facilities from data reduction, astrometry, image stacking, calibration, image subtraction and, transient search using multithreads of CPU with `multiprocessing`.__
 
 Either IMSNG or GECKO aims to find transients in the optical/NIR images to catch an early emission from them and follow up them rapidly.
 
@@ -10,44 +10,16 @@ Purpose of the gpPy is to reduce the workload from a daily data process & analys
 
 We have tested gpPy since 2020 in our internal system. After numerous debugging processes has been performed, it is now working stably, dealing with *infinte* unexpected situations on the data.
 
-# Author
-- Gregory S.H. Paek (백승학): [ORCID](https://orcid.org/my-orcid?orcid=0000-0002-6639-6533)
+## What is IMSNG/GECKO?
 
-## Version log
-- 2023.09.01: version 0.1
-- 2018: development start
-
-# INDEX
-- What is IMSNG/GECKO?
-- TBD
-- ...
-
-# 1. What is IMSNG/GECKO?
-## 1.1. Intensive Monitoring Survey of Nearby Galaxies (IMSNG; [M. Im et al. (2019)](http://koreascience.or.kr/article/JAKO201912262463280.page))
+### Intensive Monitoring Survey of Nearby Galaxies (IMSNG; [M. Im et al. (2019)](http://koreascience.or.kr/article/JAKO201912262463280.page))
 The IMSNG project is monitoring close and star-forming galaxies with a high cadence ($\rm <1\:day$) to catch the early emission of supernovae (SNe).
 
-## 1.2. Gratitational-wave Electromagnetic-wave Counterpart in Korea Observatory (GECKO; [M. Im et al. (2019)](http://yokohamagrb2019.wikidot.com/proceedings))
+### Gratitational-wave Electromagnetic-wave Counterpart in Korea Observatory (GECKO; [M. Im et al. (2019)](http://yokohamagrb2019.wikidot.com/proceedings))
 The GECKO project is aiming to find kilonovae (KNe), the optical/NIR counterpart of GW, with the network of 1-2m class telescopes in the world.
 
-## 1.3. Facilties
-Both projects share the same facilities. They consist of more than 10 telescopes described in below:
-<!-- - Korea
-	- SAO 1m
-	- SOAO 0.61m (~2020)
-	- DOAO 1m
-	- KHAO 0.4m
-	- MDFTS 0.76m
-	- MAAO 0.7m
-	- DNSM 1.0m
-- United States
-	- LOAO 1.0m
-	- McDonald Observatory 0.25m, 0.8m, 2.1m (~2020)
-- Australia
-	- LSGT 0.43m
-- Chile
-	- KCT 0.36m
-	- RASA36 0.36m
-	- 7-Dimensional Telescope (7DT) - TBD -->
+### Facilties
+Both projects share the same facilities. They consist of more than 10 telescopes, and the `gpPy` can handle the data described in below:
 
 |Facility|Location|Description|
 |:---:|:---:|:---:|
@@ -69,13 +41,20 @@ Both projects share the same facilities. They consist of more than 10 telescopes
 |KMTNet_SAAO|South Africa|TBD|
 |KMTNet_CTIO|Chile       |TBD|
 
-# 2. Requirements
+# Installation
+```
+$ git clone https://github.com/SilverRon/gppy
+```
+
+
+
+## Requirements
 We recommand the following requirements about the version:
 - This pipeline requires the version of Python == 3.11.3
 
 **We highly recommend to use the state-of-the-art `Python >= 3.11` to maximize the computing speed.**
 
-## 2.1. Python Library
+### Python Library
 - `numpy == 1.23.5`
 - `scipy == 1.10.1`
 - `matplotlib == 3.7.1`
@@ -86,23 +65,160 @@ We recommand the following requirements about the version:
 - *`alipy`
 <!-- - `PyRAF >= X` -->
 
-## 2.2. External Software
+*`alipy` for Python 3 needs extra actions to be performed. Please follow below steps (a little bit messy though...):
+
+### External Software
 - `SourceEXtractor == 2.19.5`: `sex`
 - Astrometry.net: `solve-field`
 - `HOTPANTS == 5.1.11`: `hotpants`
 - `SWarp == 2.38.0` (if necessary): `swarp`
 
-*`alipy` for Python 3 needs extra actions to be performed. Please note the section X.X to install the `alipy` for the Python 3.
 
-# 3. Installation
+1. Unzip the `alipy.tar.gz` in `./sample_code` directory
+2. Install `alipy`
+	```
+	cd alipy
+	# python setup.py install is not working properly
+	pip install .
+	```
+3. Install `asciidata` in `./sample_code/alipy/asciidata` directory
+	```
+	cd asciidata/
+	pip instsall .
+	```
+4. Edit source code of `alipy` by editing align.py in `{path_to_site-pakages}/alipy/align.py`
+	
+	a. Change importing libraries
+	```
+	# line 7
+	## Before
+	import alipy
+
+	## After
+	import astropy.io.fits as pyfits
+	```
+
+	b. Change the `writer` variable
+	```
+	## Before
+
+	# Step 1, we write the geomap input.
+	...
+	geomap = open(geomapinpath, "wb")
+	writer = csv.writer(geomap, delimiter="\t")
+	...
+	
+	## After
+	...
+	geomap = open(geomapinpath, "w")
+	writer = csv.writer(geomap, delimiter="\t", lineterminator="\n", quotechar="'", quoting=csv.QUOTE_NONE)
+	...
+	```
+
+<!-- # Structure and Usage
+`gpPy` consists of four parts.  -->
+
+# Structure 
+1. `gpwatch.py`
+	- 이 코드만 돌려도 아래의 단계가 자동으로 이루어집니다. 
+	
+	1. Monitor the uploaded data in certain directories
+
+	2. Check the change of file size - *slack alert!*
+
+	3. If the change is stopped in bytes unit, run the main script 
+
+2. `IMSNG_routine.py` (or `GECKO_routine.py`)
+	- `gpwatch.py`를 통해 자동으로 실행되기도 하고, 특정 천문대의 단일 날짜의 데이터 폴더를 처리할때 단독으로 사용할 수 있습니다. '*' 표시가 있는 process는 코드를 실행할때 설정한 thread 숫자에 따라 multi-process 기능이 적용됩니다.
+
+	1. Header Correction
+		- Because `gpPy` handles 10+ telescope data with various configurations, this step is the most important to make homogeneous outputs
+	2. Making Master frames
+		- All master frames are saved in the directory where the user set. If there is no master frames in the same day, it will use the one taked in the nearest date.
+		- `bn_median`, which is twcie faster than the `np.median`. 
+		1. Master Bias (Zero)
+		2. Master Dark
+		3. Master Flat
+	5. Data Reduction - Bias & Dark Correction and Flat Fielding
+		- If you set to correct the fringe pattern in the image (e.g. LOAO z and y-bands), the defringe process will be done. This process requires the master defringe frame and the scale factors of dark and bright areas of the master defringe frame.
+
+	6. *Astrometry (`solve-field` commands from `Astrometry.net`)
+	7. *Removal of Cosmic-ray (`LAcosmic`): Computational cost is high.
+	8. Convert filename to convertional format
+		- Format: `Calib-{obs}-{object or field}-{date}-{time}-{filter}-{exposure time}.fits`
+			- The `gpPy` refers and modifies the name format of iTelescope
+			- example: Calib-LOAO-M101-20240223-130150-R-60.fits
+			- `obs`: Observatory or Telescope name
+			- `object or field`: Observed object or field, corresponding the header keyword `OBJECT`
+			- `date` & `time`: Observed UTC date and time, corresponding the header keyword `DATE-OBS`
+			- `exposure time`: Exposure time, corresponding the header keyword `EXPTIME`
+	9. Run photometry code for reduced single frames
+		- If all process goes well, there are the same number of `Calib*fits` with the raw OBJECT frames. Photometry will be applied on the `Calib*fits`.
+
+3. `phot/gregoryphot_mp_2021.py`: Photometry for single frames
+	- This photometry code requires `gphot.config` file to set the important paramter. If there is no configuration file in the directory where the code runs, it automatically default one (`config/gphot.config`). 
+	- Source detection and Photometry (`source-extractor`)
+		- To make more accurate photometric measurement and shape definition of sources, `source-extractor` runs twice. 
+			1. First run uses `config/growthcurve.*` configurations, and the detection threshold is higher and generate less number of columns than second run. The goal of the first run is to draw a signal-to-noise curve to define the most optimized aperture size where the SNR is the highest, and to measure preliminary FWHM (seeing) of detected sources for input parameter of second run.
+			2. Second run uses `config/gregoryphot.*` configurations.  
+	- Below is the reference catalog for the zeropoint calibration. Considering the survey coverage and its accuracy, PanSTARR DR1 is highly recommended for the calibration of telescopes in the Northen hemisphere and APASS is recommended for the calibraiton of telescopes in the Southern hemisphere. 
+		- PanSTARRS DR1 (_grizy_)
+		- SDSS DR12 (_ugriz_)
+		- APASS (_BVgri_)
+		- 2MASS (_JHK_)
+	- The `gpPy` calibrate all magnitudes to the AB magnitude. If the calibration of Johnson-Cousine filter system (_UBVRI_) is required, the conversion equations to use the SDSS or PS1 magnitude are applied (Blaton+07). 
+
+4. Image align & combine
+	- Alignment: `gregistering`
+	- Combine: `imcombine` task in `pyraf` or `SWarp`
+5. Photometry for combined frame
+6. Image Subtraction
+7. Photometry for subtracted frame
+8. `gregoryfind_bulk_mp_2021.py`
+	- Filtering transient candidates among detections in the subtracted frame
+	1. Generate stamp images for the filtered transient candidates
+
+9. Move output files to designated directory
+10. Make the final log file - *slack alert!*
+
+*- Note that this pipeline is designed to handle only IMSNG/GECKO facilities, so some functionalities are limited to our system or structure. If you want to apply it to your system, Feel free to let me know, and we can discuss together.*
+
+<!-- ## Calibration
+1. Master Bias
+2. Master Dark
+3. Master Flat -->
+
+## Photometry
+The `gpPy` uses the differential photometry with the reference sources in the images
+
+### Reference catalogs and Conversion of filter systems
+All magnitudes that `gpPy` calculates are AB magnitude systems. Some reference catalogs (e.g. APASS) has Vega system (_BV_). Not only that, filter system of telescopes (e.g. LOAO, ...) follows Johnson-Cousine (_BVRI_). 
+
+### Aperture Keywords
+- `mag_auto`
+- `mag_aper`: Best aperture diameter assuming the gaussian profile (SEEING x1.3462)
+- `mag_aper_1`: Set the optimized aperture size based on the SNR curve
+- `mag_aper_2`: (Aperture Diameter) = (SEEING x2)
+- `mag_aper_3`: (Aperture Diameter) = (SEEING x2)
+- `mag_aper_4`: Fixed 3" diameter aperture 
+- `mag_aper_5`: Fixed 5" diameter aperture
+
+## Output
 ```
-$ git clone https://github.com/SilverRon/gppy
+# reduced & calibrated single frame
+Calib*.fits
+Calib*.cat
+
+# reduced & calibrated combined frame
+Calib*com.fits
+hcCalib*com.fits 
+hdCalib*com.fits
+*.phot.cat
 ```
 
-# 4. Structure and Usage
-`gpPy` consists of four parts.
-
-## 4.1. `gpwatch.py`
+## Usage
+### Monitoring the new data
+You can find the `gpwatch.py`. It has a infinite `while` loof to monitor the newly uploaded data in the specific directory where you direct. 
 ```
 cd ~/gppy
 
@@ -110,91 +226,78 @@ cd ~/gppy
 # *require either capital letter or lower case
 # **require cpu >= 1
 
+# Example for the LOAO observatory data
 python gpwatch.py loao 2
 ```
-## 4.2. Main
-### 4.2.1. `IMSNG_routine.py`
-### 4.2.2. `GECKO_routine.py`
-### 4.2.3. `7DT_routine.py` (TBD)
 
-## 4.3. Photometry
+Or, you can manually type the observatory name to process like this:
+
+```
+> python gpwatch.py 
+OBSERVATOR LIST :['LOAO', 'DOAO', 'SOAO', 'CBNUO', 'KHAO', 'KCT_STX16803', 'RASA36', 'LSGT']
+obs:loao
+```
+
+If there is the new data, it starts to measure the size of the folder (e.g. `2024_0229`) to recognize whether the data is complete its upload. If there is no change in the total data size in the new data directory, then it runs the main pipeline to process a single data folder (`IMSNG_routine.py`).
+```
+> python gpwatch.py 
+OBSERVATOR LIST :['LOAO', 'DOAO', 'SOAO', 'CBNUO', 'KHAO', 'KCT_STX16803', 'RASA36', 'LSGT']
+obs:loao
+============================================================
+
+[`gpwatch`/o_o] Watching new data for LOAO with 1 cores 
+
+============================================================
+00:00:00
+<Response [200]>
+[`gpwatch`/LOAO] Detected New 2024_0229 Data
+python ./IMSNG_Routine.py LOAO 1
+```
+<!-- ## Processing the data
+There are two pipelines depending on the types of dat, one is for the IMSNG, the other for the GECKO. The main difference between them is that GECKO pipeline has much simpler steps to make faster process for the real-time identification of transient, but they are fundamentally identical.
+
+### `IMSNG_routine.py`
+This pipeli
+
+### `GECKO_routine.py`
+
+## 3. Photometry
 They are located in `./phot/`.
 
-### 4.3.1. `gregoryphot_mp_2021.py`
+### `gregoryphot_mp_2021.py`
 TBD
 
-### 4.3.2. `gregoryphot_sub_2021.py`
+### `gregoryphot_sub_2021.py`
 TBD
 
-## 4.4. Transient Search
-### 4.4.1. `gregoryfind_bulk_mp_2021.py`
+## 4. Transient Search
+### `gregoryfind_bulk_mp_2021.py` -->
 
-# 5. Features 
-## 5.1. Structure
-1. Monitor the uploaded data in certain directories
-2. Check the change of file size - *slack alert!*
-3. If the change is stopped in bytes unit, run the main script (`IMSNG_routine.py` or `GECKO_routine.py`)
-4. Header Correction
-5. Data Reduction
-	- 5.1. Bias correction
-	- 5.2. Dark correction
-	- 5.3. Flat Fielding
-6. Astrometry (`Astrometry.net`)
-7. Removal of Cosmic-ray (`LAcosmic`)
-8. Convert filename to convertional format
-9. Photometry for single frame
-	- Reference catalog for the zeropoint calibration
-		- PansTARRS DR1
-		- SDSS DR?
-		- APASS
-		- 2MASS
-10. Image align & combine
-	- Alignment: `gregistering`
-	- Combine: `imcombine` task in `pyraf` or `SWarp`
-11. Photometry for combined frame
-12. Image Subtraction
-13. Photometry for subtracted frame
-14. Filtering transient candidates among detections in the subtracted frame
-15. Generate stamp images for the filtered transient candidates
-16. Move output files to designated directory
-17. Make the final log file - *slack alert!*
-
-*- Note that this pipeline is designed to handle only IMSNG/GECKO facilities, so some functionalities are limited to our system or structure. If you want to apply it to your system, Feel free to let me know, and we can discuss together.*
-
-## 5.X. Calibration and Photometry
-### 5.X.X. keywords
-- `mag_auto`
-- `mag_aper`
-- `mag_aper_1`
-- `mag_aper_2`
-- `mag_aper_3`
-
-## 5.2. Output
-```
-Calib*.fits      # reduced & calibrated single frame
-Calib*.cat
-Calib*com.fits   # reduced & calibrated combined frame
-hcCalib*com.fits 
-hdCalib*com.fits
-*.phot.cat
-```
-
-# 6. Future Update
-- GPU-accelerated data reduction and `SourceEXtractor` for a large size of images
-- WCS correction (https://github.com/evertrol/sippv)
+# Future Update
+<!-- - GPU-accelerated data reduction and `SourceEXtractor` for a large size of images -->
+- WCS correction ([Github](https://github.com/evertrol/sippv))
 - Handle different binning size
 - ...
 
-# 7. License and Copyright
+# License and Copyright
 TBD
 
-# 8. Contact
-- Gregory S.H. Paek (gregorypaek94___at___gmail.com) @Seoul National University
+# Contact
+|Name|Institution|Email|ORCID|
+|:---:|:---:|:---:|:---:|
+|Gregory S.H. Paek|*SNU|gregorypaek94_at_g_mail|[ORCID](https://orcid.org/my-orcid?orcid=0000-0002-6639-6533)|
 
-# 9. Reference
+*SNU: Seoul National Univeristy
+
+<!-- # 9. Reference
 1. IMSNG
-2. GECKO
+2. GECKO -->
 
-# 10. Acknowledgments
+# Acknowledgments
 Thanks to our IMSNG team members, Prof. Myungshin Im, Dr. Changsu Choi, Dr. Seo-won Chang, Dr. Gu Lim, and Dr. Sophia Kim.
 Especially, special thanks to Dr. Changsu Choi, who made techincal foundations in the beggining of the IMSNG project, inspired and motivated me to develop this pipeline.
+
+# Version log
+- 2024.03.01: v0.2 documentation 
+- 2023.09.01: v0.1
+- 2018: development start
