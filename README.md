@@ -46,8 +46,6 @@ Both projects share the same facilities. They consist of more than 10 telescopes
 $ git clone https://github.com/SilverRon/gppy
 ```
 
-
-
 ## Requirements
 We recommand the following requirements about the version:
 - This pipeline requires the version of Python == 3.11.3
@@ -120,7 +118,7 @@ We recommand the following requirements about the version:
 
 # Structure 
 1. `gpwatch.py`
-	- 이 코드만 돌려도 아래의 단계가 자동으로 이루어집니다. 
+	- Executing this script alone automates the following processes:
 	
 	1. Monitor the uploaded data in certain directories
 
@@ -129,7 +127,7 @@ We recommand the following requirements about the version:
 	3. If the change is stopped in bytes unit, run the main script 
 
 2. `IMSNG_routine.py` (or `GECKO_routine.py`)
-	- `gpwatch.py`를 통해 자동으로 실행되기도 하고, 특정 천문대의 단일 날짜의 데이터 폴더를 처리할때 단독으로 사용할 수 있습니다. '*' 표시가 있는 process는 코드를 실행할때 설정한 thread 숫자에 따라 multi-process 기능이 적용됩니다.
+	- This script can be executed automatically via gpwatch.py or used independently to process a single date's data folder for a specific observatory. Processes marked with an asterisk (*) leverage multi-processing capabilities based on the number of threads specified at runtime.
 
 	1. Header Correction
 		- Because `gpPy` handles 10+ telescope data with various configurations, this step is the most important to make homogeneous outputs
@@ -172,12 +170,11 @@ We recommand the following requirements about the version:
 	- Alignment: `gregistering`
 	- Combine: `imcombine` task in `pyraf` or `SWarp`
 5. Photometry for combined frame
-6. Image Subtraction
-7. Photometry for subtracted frame
-8. `gregoryfind_bulk_mp_2021.py`
-	- Filtering transient candidates among detections in the subtracted frame
-	1. Generate stamp images for the filtered transient candidates
-
+6. Image Subtraction: `HOTPANTS` (Becker+)
+7. Photometry for subtracted frame: `phot/gregoryphot_sub_2021.py`
+8. Transient Search: `phot/gregoryfind_bulk_mp_2021.py`
+	1. Filter transient candidates among detections in the subtracted frame
+	2. Generate stamp images for the filtered transient candidates
 9. Move output files to designated directory
 10. Make the final log file - *slack alert!*
 
@@ -216,8 +213,8 @@ hdCalib*com.fits
 *.phot.cat
 ```
 
-## Usage
-### Monitoring the new data
+# Usage
+## Monitoring the new data
 You can find the `gpwatch.py`. It has a infinite `while` loof to monitor the newly uploaded data in the specific directory where you direct. 
 ```
 cd ~/gppy
@@ -253,6 +250,37 @@ obs:loao
 [`gpwatch`/LOAO] Detected New 2024_0229 Data
 python ./IMSNG_Routine.py LOAO 1
 ```
+
+## How to implement the data configuration of new observatory
+The primary feature of gpPy is its expandability, allowing it to handle various datasets from different observatories efficiently. Therefore, implementing a new configuration is straightforward and can be done in a matter of minutes. Follow these steps to get started:
+
+1. Basic Information: First, gather the basic information about the camera and telescope. The most crucial parameters to note are as follows:
+	```
+	obs             ccd         gain    RDnoise     dark    pixelscale  fov
+	LOAO            E2V         2.68    4.84        0.0     0.794       28.1
+	...
+	```
+	The location of `obs.dat` in current version is located here: `config/obs.dat`. 
+
+2. Observational Data Structure: Next, organize the observational data using the following folder tree structure:
+	```
+	{observatory}/{date}
+	├── image.000.fits
+	├── image.001.fits
+	├── image.002.fits
+	...
+	```
+3. Log File: Finally, create a log file with a specific filename format ({observatory}.log) that contains the following information:
+	```
+	date
+	/data6/obsdata/LOAO/2024_0101
+	/data6/obsdata/LOAO/2024_0102
+	/data6/obsdata/LOAO/2024_0103
+	...
+	```
+<!-- path_obs = '/home/paek/table/obs.dat' -->
+<!-- path_changehdr = '/home/paek/table/changehdr.dat' -->
+
 <!-- ## Processing the data
 There are two pipelines depending on the types of dat, one is for the IMSNG, the other for the GECKO. The main difference between them is that GECKO pipeline has much simpler steps to make faster process for the real-time identification of transient, but they are fundamentally identical.
 

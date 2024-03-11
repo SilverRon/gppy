@@ -545,7 +545,7 @@ path_obs = '/home/paek/table/obs.dat'
 path_config = '/home/paek/config'
 # path_target = '/home/sonic/Research/gppy/table/transient.dat'
 path_target = './transient.dat'
-path_gphot = '{}/gphot.config'.format(path_base)
+path_gphot = f'{path_base}/gphot.config'
 path_default_gphot = '/home/paek/config/gphot.config'
 #------------------------------------------------------------
 print(path_gphot)

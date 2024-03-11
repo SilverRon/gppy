@@ -91,7 +91,7 @@ else:
 	path_raw = f'/data6/obsdata/{obs.upper()}'
 rawlist = sorted(glob.glob(path_raw+'/2*'))
 #------------------------------------------------------------
-path_obs = '/home/paek/table/obs.dat'
+path_obs = f'{path_config}/obs.dat'
 path_changehdr = '/home/paek/table/changehdr.dat'
 path_alltarget = '/home/paek/table/alltarget.dat'
 ccdinfo = tool.getccdinfo(obs, path_obs)
